@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: learning_dashboard_db
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: learning_dashboard
+    volumes:
+      - mongodb_data:/data/db
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000/api
+    depends_on:
+      - server
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+      - MONGO_URI=mongodb://admin:password123@mongodb:27017/learning_dashboard?authSource=admin
+      - JWT_SECRET=your_jwt_secret_key_here
+      - PORT=5000
+    depends_on:
+      - mongodb
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+
+volumes:
+  mongodb_data:
