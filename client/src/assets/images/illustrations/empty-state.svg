@@ -1,0 +1,7 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="80" fill="#F7F9FC" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="6 6"/>
+  <path d="M100 40V160M40 100H160" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="6 6"/>
+  <circle cx="100" cy="100" r="30" fill="white" stroke="#CBD5E0" stroke-width="2"/>
+  <path d="M90 95L100 105L115 85" stroke="#48BB78" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="100" y="140" text-anchor="middle" fill="#718096" font-size="14">No data found</text>
+</svg>
