@@ -5,3 +5,4 @@
 [build.environment]
   NODE_VERSION = "18"
   NPM_VERSION = "9"
+  CI = "false"  # ← ADD THIS LINE
