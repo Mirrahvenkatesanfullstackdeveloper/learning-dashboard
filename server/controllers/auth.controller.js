@@ -5,7 +5,7 @@ const { sendEmail } = require('../utils/sendEmail');
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
+    expiresIn: '7d'  // Hardcoded - this will fix the error
   });
 };
 
