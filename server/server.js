@@ -15,11 +15,11 @@ app.set('trust proxy', 1);
 // Security middleware
 app.use(helmet());
 
-// Define allowed origins
+// Define allowed origins - ONLY Vercel frontends
 const allowedOrigins = [
-  'http://localhost:3000',
-  'https://nexalearningdashboard.netlify.app',
+  'http://localhost:3000',  // Local development
   'https://learning-dashboard-sandy.vercel.app',
+  'https://learning-dashboard-no9iods1v.vercel.app',
   process.env.CLIENT_URL
 ].filter(Boolean); // Remove any undefined values
 
@@ -68,6 +68,15 @@ app.get('/api/health', (req, res) => {
     status: 'success', 
     message: 'Server is running',
     timestamp: new Date().toISOString()
+  });
+});
+
+// Simple test route to verify server is running
+app.get('/api/test', (req, res) => {
+  res.json({ 
+    message: 'Server is working!',
+    routes: ['/api/auth', '/api/users', '/api/courses'],
+    allowedOrigins: allowedOrigins
   });
 });
 

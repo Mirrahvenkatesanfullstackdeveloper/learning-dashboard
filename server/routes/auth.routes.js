@@ -9,9 +9,10 @@ const {
   updatePreferences,
 } = require('../controllers/auth.controller');
 
-// Validation rules
+// Validation rules - using firstName and lastName
 const registerValidation = [
-  body('name').notEmpty().withMessage('Name is required'),
+  body('firstName').notEmpty().withMessage('First name is required'),
+  body('lastName').notEmpty().withMessage('Last name is required'),
   body('email').isEmail().withMessage('Please provide a valid email'),
   body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
 ];
